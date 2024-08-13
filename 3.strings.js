@@ -5,7 +5,7 @@ const name="Ayush kumar" // literal declartion
 const country=new String("India")  // constructor declaration
 const age=21
 
-const details=`my name is ${name} and i am ${age} years old` // using template literals for concatenation: best practice
+const details=`my name is ${name} and i am ${age} years old` // using template literals or string interpolation for concatenation: best practice
 
 console.log(details);
 
