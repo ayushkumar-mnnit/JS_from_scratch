@@ -1,0 +1,10 @@
+
+
+JavaScript runs on browsers V-8 engine where all JS codes are written on the console but this is not a efficient way of using JS so we use nodejs in terminal of a local IDE (ex. VS code) to run JS ouside browsers within server.
+
+nodejs is used becoz browsers v8 engine is in-built in it. 
+
+to run using nodejs open terminal and write "node filename.js" and enter.
+
+to open terminal---> ctrl+`
+to close terminal---> exit
