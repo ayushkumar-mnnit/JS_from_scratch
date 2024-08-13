@@ -1,6 +1,8 @@
 
+// Strings in JS: 
 
-const name="Ayush kumar"
+const name="Ayush kumar" // literal declartion
+const country=new String("India")  // constructor declaration
 const age=21
 
 const details=`my name is ${name} and i am ${age} years old` // using template literals for concatenation: best practice
