@@ -10,6 +10,10 @@ const student={
 }
 
 
+// there is one more way of declaring objects (just like ham kartey a rahe hain ek literal se aur dusra constructor se using new key word).
+
+const fruits=new Object()  // this is known as "singleton" object and earlier one was non-singleton obj. 
+
 // accessing values from obj
 
 console.log(student.name);   // using dot operator as objname.keyname (mostly used)
