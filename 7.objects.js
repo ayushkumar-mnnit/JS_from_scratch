@@ -165,7 +165,9 @@ const user={
 
 // till now we know how to acces values from an object using dot notation and all but there is yet smarter way which is used nowadays is object destructuring.
 
-const {email,name,password}=user // this syntax is obj destrutcuring: what happens here is that whatever obj is present on RHS and keys written in LHS , all the values are injected in these keys directly. Order of keys need not to be the same as in obj but ya name of all keys should be consistent to obj key names.
+const {email,name,password}=user // this syntax is obj destrutcuring: what happens here is that whatever obj is present on RHS and keys written in LHS , all the values are injected in these keys directly.
+const {email:userEmail}=user // this way an alias can be given to any key but directly keyname can't be changed
+const {name,email}=user  // order doesn't matter until key names are consistent with that in object, also using all keys is not mandatory
 
 // hence now directly values can be get using keys , no need of dot or any other operator
 console.log(name);
