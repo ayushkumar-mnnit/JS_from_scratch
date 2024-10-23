@@ -1,0 +1,70 @@
+
+<!-- Event bubbling and event capturing 
+
+
+Event bubbling- when an event is bubbled up from the innermost element to the outermost element, it is called event bubbling.This is default behavior.
+
+Event capturing- when an event is captured from the outermost element to the innermost element, it is called event capturing.
+
+MDN doc link:   https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Event_bubbling
+
+-->
+
+
+<!-- bubbling example:   -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+        <div id="container">
+          <button>Click me!</button>
+        </div>
+        <pre id="output"></pre>   <!--this is nothing but output div-->
+</body>
+<script>
+
+const output = document.querySelector("#output");
+function handleClick(e) {
+  output.textContent += `You clicked on a ${e.currentTarget.tagName} element \n`;
+}
+
+const container = document.querySelector("#container");
+const button = document.querySelector("button");
+
+document.body.addEventListener("click", handleClick);
+container.addEventListener("click", handleClick);
+button.addEventListener("click", handleClick);
+
+/* see whats happennig here, we defined a function handleClick and attached it to the body, container and button to be fired on listening the event "click" that's why we added the event listeners in all.
+
+
+the click on the button fires first
+followed by the click on its parent (the <div> element)
+followed by the <div> element's parent (the <body> element).
+
+We describe this by saying that the "event bubbles up from the innermost element that was clicked".
+
+but this might be a problem in case we dont want event to propagate from clicked element to its parent, so we can use 
+e.stopPropagation() in innermost element like this
+
+document.getElementById('childButton').addEventListener('click', function(e) {
+console.log("Button clicked");
+e.stopPropagation();  // Stop the event from bubbling to the parent div
+});
+
+
+Event Delegation ~
+
+Many times its useful also to use bubbling: In particular, it enables event delegation. In this practice, when we want some code to run when the user interacts with any one of a large number of child elements, we set the event listener on their parent and have events that happen on them bubble up to their parent rather than having to set the event listener on every child individually.
+
+
+*/
+
+</script>
+
+</html>
