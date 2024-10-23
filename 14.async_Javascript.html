@@ -1,0 +1,80 @@
+<!-- 
+
+     Asynchronous JavaScript:
+
+By default JS is synchronous and single threaded language (So its slower than other languages natively).
+
+Sync- means code executes line by line (kind of series execution), when one line is executed it moves to next line.So until current task is completed (it waits), the next line will not be executed.This is why its called blocking nature, becoz other tasks are blocked
+
+Async- code is not executed line by line but in parallel. This is called non-blocking nature.Because here if one task is under execution and is not completed then it will not block other tasks.Other tasks keep on executing on some other thread and current task is on some other thread running parallely and once done, its notified.
+
+clearly for async - we need multithreading.But JS is single threaded ??
+
+see, JS is single threaded when we rely purely on its core V8 engine (which is written in C++) but JS is rarely available standalone in v8 engine, it is found in browsers or runtime environments like nodejs,deno etc where it becomes multi threaded.
+so we can very well use asnyc nature of JS as well.
+
+
+you may think sync is blocking and async is non-blocking so async is always better than sync, but this is not true always !!
+
+ex. reading a file in JS programme synchronously is a blocking operation because programmes don't have direct access to interact with memory, first control goes to kernel and then kernel gives access to memory. By this time all other tasks are blocked.
+but if we do it asyncronously , then it is non-blocking and while file is being read, other tasks can be executed in parallel.
+
+Here it seems to be a good practice to use async in JS. But wait !!
+
+ex. consider a DB request to register a new user, if we are handling creation of new user in db asynchronously then obviously interacting with db takes time so parallely other lines of code would be executed in parallel.This is a problem , suppose an error occurs while creating user but this response will come after some time and by this time user would have already got a message of success, which is wrong.
+
+so there is no hard and fast rule to use async or sync in JS.It depends on usecase
+
+
+-->
+
+
+
+<!-- as discussed earlier async nature is not of core JS, hence to implement async behaviour browser and runtime environments gives us some methods like setTimeout,setInterval etc.
+
+
+setTimeout- to set a time delay before executing code
+setInterval- to execute code repeatedly with a time interval
+
+usually async programming is suitable in tasks involving some long-running operations, means which can possibly time to complete.Like db calls, API requests, file system calls etc. or in other words in async programming we need to await for response.
+
+setTimeout and setInterval by defaut await until the specified time is completed.So they can be used to implement async behaviour
+
+-->
+
+
+
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+ </head>
+ <body style="background-color: #212121; color: #fff;" >
+    <div id="async" ></div>   
+    <div id="next">Next line</div>
+
+ </body>
+
+ <script>
+
+    setTimeout(()=>{
+            document.getElementById('async').innerHTML= "hello world async"
+    },3000)
+     
+ </script>
+
+ </html>
+
+ <!-- here if you see then first div is printed after 3 seconds but second div is not blocked  (prints as soon browser loads) in mean time hence async  -->
+
+
+<!-- Going ahead we'll see async using "promises" 
+ 
+A Promise is a core feature in JavaScript for handling asynchronous programming, and it can be managed using two approaches:
+
+.then() and .catch() (the traditional Promise handling approach)
+async and await (a more modern, cleaner way to handle Promises introduced in ES8/ES2017)
+
+-->
