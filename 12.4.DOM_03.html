@@ -1,0 +1,88 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chai aur code | DOM</title>
+</head>
+<body style="background-color: #212121; color: #fff;">
+    <ul class="language">
+        <li>Javascript</li>
+    </ul>
+
+    <button id="ad">add</button>
+    <button id="ed">edit</button>
+    <button id="de">delete</button>
+</body>
+<script>
+
+// add
+
+    function addLanguage(langName){
+        const li = document.createElement('li');
+        li.innerHTML = `${langName}`
+        document.querySelector('.language').appendChild(li)
+    }
+  
+
+    document.querySelector('#ad').addEventListener('click', () => {
+        addLanguage("python")
+        addLanguage("typescript")
+    })
+
+
+    //Edit
+    const secondLang = document.querySelector("li:nth-child(1)")
+    console.log(secondLang);
+    const newli = document.createElement('li')
+   
+    
+    document.querySelector('#ed').addEventListener('click', () => {
+         newli.textContent = "C++"
+        secondLang.replaceWith(newli)  
+    })
+
+    //edit: another way using outerHTML
+    // const firstLang = document.querySelector("li:first-child")
+    // firstLang.outerHTML = '<li>TypeScript</li>'
+
+    //remove
+    const lastLang = document.querySelector('li:first-child')
+
+    document.querySelector('#de').addEventListener('click', () => {
+        lastLang.remove()
+    })
+
+
+
+</script>
+</html>
+
+
+
+<!-- 
+
+when we work with React or any other library/framwork we actually dont need to use DOM explicitely we simply write JSX code in react and under the hood react manages all this so we dont even realise the usefullness of DOM, but if we have worked in pure html,css,js then we will need to use DOM and understand its power.
+
+what happens there?
+
+in react we have a very simple html doc which is empty, nothing in body but there is an empty script tag with id ='root'.
+now what happens is when we load the application then empty DOM is created on browser with no element nodes.This is called real DOM
+but we write code in componets which is then wrapped in a App.jsx component and its pulled in a main js file called index.js.
+now when we write document.getElementById('root') and render it then it injects all the code in that script tag of html file.
+
+its nothing new , its like currently we were writing JS within script tag of html itslef but now we wrote JS somewhere else in a file and imported it like external JS.
+
+but entire code is not injected in DOM, react has a virtual DOM which is a copy of real DOM and it monitors changes in real dom from virtual DOM and react updates the DOM accordingly. This is done via Diffing Algorithm.
+
+Like initally real dom is almost empty so entire virtual dom content is injected in it.Then if some changes are made then everytime new real dom is not created, diffing algorithm is finds changes and update the DOM accordingly with minimum changes needed
+
+
+thats why react applications are fast and efficient.
+
+// also note one thing related to  optimization: always prefer storing the element fetched from DOM in a variable.so that everytime we need to access any of its child then we dont need to tarverse entire tree from root.
+
+-->

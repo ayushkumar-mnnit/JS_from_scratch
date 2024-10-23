@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM_01</title>
+</head>
+<body style="background-color: black;color: aliceblue;">
+    
+    <div class="container">
+
+        <h1 id="heading">welcome </h1>
+        <button id="btn">click me</button>
+    </div>
+
+</body>
+
+<!-- this is a static html doc and displays welcome message, now to make it dynamic we are going to inject JS , its written within script tags -->
+
+<script>
+
+/* 1.we have to target the element that we want to manipulate- in this case button and h1 , suppose we want to show welcome user on click  of button. we have mainly 3 ways to select or target any element - id selector, class selector and query selector
+
+2.all these methods are present in document Object of window object so we can start like this window.document.something but since window obj is so common that it is understood by default so we can start like this document.something
+
+3.id selector: document.getElementById('')  simply pass the id of the element
+4.class selector: document.getElementsByClassName('')  simply pass the class of the element
+
+5.query selector: document.querySelector('')
+
+document.querySelector('#id-name')
+document.querySelector('.class-name')
+document.querySelector('tag-name')                           ex. document.querySelector('h1')
+document.querySelector('tag-name[attribute-name="value"]')   ex. document.querySelector('p[id="para1"]')
+document.querySelector('p:first-child')
+document.querySelector('p:nth-child(n)')
+
+6. query selector all : document.querySelectorAll()    usually className or tagName is passed it becoz id is unique.
+
+
+now keep in mind:
+
+*id selector and query selector -returns only one element and in pure html format like <h1>sdsds</h1
+*class selector -returns all elements matching with className and returns in form HTMLCollection (looks like array but not an array)
+*query selector all -returns all elements matching with tagName and returns in form NodeList (looks like array but not an array)
+
+An HTMLCollection will include only "element nodes" whiles a NodeList includes all node types.
+
+ex. <div class='container'>
+    <h1>Hello</h1
+    </div>
+
+if we use document.getElementsByClassName('container') it will return HTMLCollection and it will include only h1 as element node.
+and we can verify it by using ".children" on above and it will show 1
+
+while if we use document.querySelectorAll('.container') it will return NodeList and it will include h1 as element node, line-break after div as other node,hello as textnode, line break after h1 as other node.so here ".childNodes" will show 3
+
+
+although NodeList and HTMLCollection are not same as arrays but many array properties are available in both of them.Like length,0-based indexing,simple loops including forEach loop also but map,filter,reduce methods are not available becoz they work only on arrays.so convert them to arrays to use them as "Array.from(HTMLCollection/NodeList)"
+To check which prop are available just click "prototype" received in NodeList/HTMLCollection and it will show you which properties are available like you will not find map,filter,reduce etc.
+
+
+7. then we have .innerHTML, .textContent, .innerText  -- these are used to manipulate the html of an element
+
+<p> Hello <span> world </span> <span style="display:none">this is hidden</span> </p>
+
+.innerHTML- gives textnode content + any html written (which is visible) .ex- Hello <span> world </span>
+.innerText- gives textnode content only (which is visible) .ex- Hello world
+.textContent- gives textnode content only (which is visible or invisible also) .ex- Hello world this is hidden
+
+---------------------------------------------------------------
+
+enough, now lets see how we can manipulate it.
+
+
+
+
+*/
+
+
+document.getElementById('btn').addEventListener('click',()=>{
+    document.getElementById('heading').innerHTML = ' welcome, Hello user';
+})
+
+// we have targetted the button by its id then we added an event listener of the type 'click' to track when button got clicked, when we click it , we will fire a callback function which manipulates innerHTML and  UI changes to "welcome, Hello user"
+
+
+</script>
+
+</html>
