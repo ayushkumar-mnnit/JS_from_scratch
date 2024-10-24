@@ -61,28 +61,68 @@
 </script>
 </html>
 
-
-
 <!-- 
+also note one thing related to  optimization: always prefer storing the element fetched from DOM in a variable.so that everytime we need to access any of its child then we dont need to tarverse entire tree from very root. -->
 
-when we work with React or any other library/framwork we actually dont need to use DOM explicitely we simply write JSX (which is js in simple html like syntax which eventually got added to empty script of index.html and updates the UI) code in react and under the hood react manages all this so we dont even realise the usefullness of DOM, but if we have to work in pure html,css,js then we will need to use DOM and understand its power.
 
-what happens there?
+
+
+
+
+<!--  This part is kind of intro to what happens under the hood of react and how is it realted to DOM.
+
+when we work with React or any other library/framwork we actually dont need to use DOM explicitely we simply write JSX (which is js in simple html like syntax which eventually got added to empty script of index.html and updates the UI) code in react and under the hood react manages all this so we dont even realise the usefullness of DOM, but if we have to work in pure html,css,js then we use DOM and understand its power.
+
+what happens in React ?
 
 in react we have a very simple html doc which is empty, nothing in body but there is an empty script tag with id ='root'.
 now what happens is when we load the application then empty DOM is created on browser with no element nodes.This is called real DOM
-but we write code in componets which is then wrapped in a App.jsx component and its pulled in a main js file called index.js.
-now when we write document.getElementById('root') and render it then it injects all the code in that script tag of html file.
+but we write code in componets which is then wrapped in a App.jsx component and its pulled in a main JS file called index.js.
 
-its nothing new , its like currently we were writing JS within script tag of html itslef but now we wrote JS somewhere else in a file and imported it like external JS.
+now when we write " createRoot(document.getElementById('root')).render(<App />) " then it selects the element with id='root' and 
+injects all the code in that script tag of html file and "createRoot()" particularly creates a DOM of its own (diff from real dom) and is known as "virtual DOM".
 
-but entire code is not injected in DOM, react has a virtual DOM which is a copy of real DOM and it monitors changes in real dom from virtual DOM and react updates the DOM accordingly. This is done via Diffing Algorithm.
+[ its nothing new , its like currently we were writing JS within script tag of html itslef but now we wrote JS somewhere else in a file and imported it like external JS. ]
 
-Like initally real dom is almost empty so entire virtual dom content is injected in it.Then if some changes are made then everytime new real dom is not created, diffing algorithm finds changes and update the DOM accordingly with minimum changes needed
+Real dom is always painted on browser freshly, means if any change occurs then DOM is tree is re-created and that causes loading of page which is often seen in traditional websites.
+But now it in react it works on "Reconciliation algorithm"-The algorithm React uses to diff one tree with another to determine which parts need to be changed.So basically here entrire DOM of client side is not re-created but diffing algorithm (reconciliation algorithm) runs on virtual dom and compares changes in real dom with virtual dom, then updates only those changes in real dom.
+
+That's why react applications are fast and efficient.
+
+But still performance can be optimized because there is a scope of improvement, see how ??
+
+1. In a UI, it's not necessary for every update to be applied immediately; in fact, doing so can be wasteful, causing frames to drop and degrading the user experience because we know whenever any change in state or prop is made, it will trigger a re-render of the component
+causing an update to be made if some state changed , immediately 2-3 times then every time updating the UI makes no sense, it would be better to propagate the latest change right.
+
+2. Different types of updates have different priorities — an animation update needs to complete more quickly than, say, an update from a data store. (just like promises have higher priority in JS)
+
+3. A push-based approach requires the app (you, the programmer) to decide how to schedule work. A pull-based approach allows the framework (React) to be smart and make those decisions for you. (ex.changes due to state change are pull based , means react decides we can't forcefully push the updates if state changes)
 
 
-thats why react applications are fast and efficient.
+so to tackle these problems, "React fibre" was introduced becoz React doesn't currently take advantage of scheduling in a significant way; an update results in the entire subtree being re-rendered immediately.Primary goal of Fiber was to enable React to take advantage of scheduling. Specifically, we need to be able to
 
-// also note one thing related to  optimization: always prefer storing the element fetched from DOM in a variable.so that everytime we need to access any of its child then we dont need to tarverse entire tree from very root.
+1. pause work and come back to it later.
+2. assign priority to different types of work.
+3. reuse previously completed work.
+4. abort work if it's no longer needed.
+
+
+Architecture wise , need 
+
+Wouldn't it be great if we could customize the behavior of the call stack to optimize for rendering UIs? Wouldn't it be great if we could interrupt the call stack at will and manipulate stack frames manually?
+That's the purpose of React Fiber. Fiber is reimplementation of the stack, specialized for React components.
+stucture wise, fiber is a JavaScript object that contains information about a component, its input, and its output.
+
+
+What's the main algorithm behind React Fiber, how its differenet from reconciliation?
+
+" 1. Different component types are assumed to generate substantially different trees. React will not attempt to diff them, but rather replace the old tree completely.
+2. Diffing of lists is performed using keys. Keys should be "stable, predictable, and unique."
+
+
+B.t.w fibre is not new to react , it has been there for a long time ~ 7yrs. conventional reconciliation algo is not used since then.
+
+
+And i guess that's enough to know about behind the scenes of react library.
 
 -->
