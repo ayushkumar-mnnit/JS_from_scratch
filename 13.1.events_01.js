@@ -10,12 +10,13 @@ for ex-
 1.The user selects, clicks, or hovers the cursor over a certain element.
 2.The user chooses a key on the keyboard.
 
-some common events--> click, mouseover, mouseout, keydown, keyup, dblclick
+some common events--> click, mouseover,mouseout,mousedown,mouseup, keydown, keyup, dblclick
 
 1. click- something happen on button click. ex-The color changes when the button is clicked.
 2. dblclick — something happen on button double-click.ex- The color changes only when the button is double-clicked.
 3. mouseover and mouseout — something happen on mouse hover.ex- The color changes when the mouse pointer hovers over the button, or when  pointer moves off the button, respectively.
-4. keydown and keyup — something happen on key press.When you press a key on the keyboard, keydown fires, and it fires again as you hold the key down.When you release a key on the keyboard, keyup fires.ex- The color changes when the user presses a key on the keyboard.
+4. mousedown and mouseup- something happen on mouse click.ex- The color changes when the mouse pointer is clicked on the button, or when the mouse pointer is released from the button, respectively.
+5. keydown and keyup — something happen on key press.When you press a key on the keyboard, keydown fires, and it fires again as you hold the key down.When you release a key on the keyboard, keyup fires.ex- The color changes when the user presses a key on the keyboard.
 
 
 
