@@ -103,4 +103,17 @@ form.addEventListener("submit", (e) => {
 
 
 
+Why Use e.preventDefault():
+
+Default Behavior of a Form Submission: When you click a submit button inside a form, the form submits the data to the server (usually by reloading the page), and the browser sends the data to the URL specified in the form’s action attribute. After submission, the page reloads by default. If no action attribute is defined, it reloads the same page.
+
+Prevent Default Submission and Reload: If you want to run some JavaScript (like form validation, sending data via AJAX, or any custom function) without reloading the page, you use e.preventDefault() to stop the default form submission behavior.
+
+
+Where Does the Data Go Without e.preventDefault()?
+
+The form’s data is sent to the URL specified in the "action" attribute (using the method specified in method, typically GET or POST).
+If no action is specified, the form sends data to the same URL as the current page and causes a page reload.
+
+
 */
