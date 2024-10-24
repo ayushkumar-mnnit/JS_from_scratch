@@ -107,7 +107,7 @@ so to tackle these problems, "React fibre" was introduced becoz React doesn't cu
 4. abort work if it's no longer needed.
 
 
-Architecture wise , need 
+Architecture wise ,
 
 Wouldn't it be great if we could customize the behavior of the call stack to optimize for rendering UIs? Wouldn't it be great if we could interrupt the call stack at will and manipulate stack frames manually?
 That's the purpose of React Fiber. Fiber is reimplementation of the stack, specialized for React components.
@@ -121,6 +121,9 @@ What's the main algorithm behind React Fiber, how its differenet from reconcilia
 
 
 B.t.w fibre is not new to react , it has been there for a long time ~ 7yrs. conventional reconciliation algo is not used since then.
+
+
+Also keep in mind component in react renders whenever states or props changes and if parent renders then its all children re-renders but if child re-renders then only that child will re-render.Ex- in a component there are 3 functions and parent is catching some prop then if prop changes then all functions will re-render but if a particular function re-renders say due to change in dependency array var of useEffect then only that function will re-render.
 
 
 And i guess that's enough to know about behind the scenes of react library.
