@@ -1,6 +1,6 @@
 
 
-JavaScript runs on browsers V-8 engine where all JS codes are written on the console but this is not a efficient way of using JS so we use nodejs in terminal of a local IDE (ex. VS code) to run JS ouside browsers within server.
+JavaScript runs on browsers V-8 engine (written in C++) where all JS codes are written on the console but this is not a efficient way of using JS so we use nodejs in terminal of a local IDE (ex. VS code) to run JS ouside browsers within server.
 
 nodejs is used becoz browsers v8 engine is in-built in it. 
 
@@ -8,3 +8,37 @@ to run using nodejs open terminal and write "node filename.js" and enter.
 
 to open terminal---> ctrl+`
 to close terminal---> exit
+
+
+Node.js is a runtime environment for running JavaScript on the server side. Here's the distinction:
+
+JavaScript: A programming language originally designed to run in the browser (client-side).
+Node.js: A backend runtime environment that allows you to run JavaScript code outside the browser, specifically on the server. It uses JavaScript but enables server-side operations like handling HTTP requests, interacting with databases, file systems, etc.
+So, while Node.js uses JavaScript, it itself is not a framework or language but a platform that allows JavaScript to be used for backend (server-side) development.
+
+
+
+When people say they are building a website using "pure HTML, CSS, and JavaScript," they mean they are not using any frameworks or libraries like React, Angular, Bootstrap, or jQuery. They are directly coding everything using the core web technologies. Here's a brief breakdown:
+
+Frontend (UI/Client-Side):
+HTML: Structures the content of the website (text, images, buttons, etc.).
+CSS: Styles the content (colors, fonts, layouts, responsiveness, etc.).
+JavaScript: Adds interactivity (click events, animations, dynamic content, form validation, etc.).
+No frameworks like React or Vue are used—just plain "vanilla JS" (oridinary JS).
+
+Backend (Server-Side):
+Server: Written using languages like JS, PHP, Python, etc., but no frameworks like Express (JS) or Django or flask (Python).
+File Handling: Data may be processed using simple HTTP requests or by directly interacting with databases/files.
+Database: Can be managed directly using raw SQL queries or file-based storage without ORM tools like Sequelize or Mongoose.
+In essence, the website is created from scratch, without any pre-built components, libraries, or frameworks.
+
+
+JS of browser has limited capabilities like specifically in case of file handling:
+
+1. Write Files to Disk: Browsers cannot write files directly to the user's file system without explicit user interaction (e.g., saving a file via a download prompt). They can't save or overwrite files on the user's machine like a backend environment can.
+2. Access System Files: Browsers can't access or modify system files outside the scope of what users upload or interact with.
+3. Perform Server-Side Operations: Browsers can't directly handle file storage on the server or work with databases. That’s where backend environments like Node.js come in.
+
+In contrast, Node.js (and other backend environments) can perform full file-handling operations like reading from and writing to files on the server, making it suitable for backend tasks that involve file storage and manipulation. 
+
+Hence, Nodejs unlocks real power of JavaScript
