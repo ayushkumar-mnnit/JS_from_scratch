@@ -65,7 +65,7 @@
 
 <!-- 
 
-when we work with React or any other library/framwork we actually dont need to use DOM explicitely we simply write JSX code in react and under the hood react manages all this so we dont even realise the usefullness of DOM, but if we have worked in pure html,css,js then we will need to use DOM and understand its power.
+when we work with React or any other library/framwork we actually dont need to use DOM explicitely we simply write JSX (which is js in simple html like syntax which eventually got added to empty script of index.html and updates the UI) code in react and under the hood react manages all this so we dont even realise the usefullness of DOM, but if we have to work in pure html,css,js then we will need to use DOM and understand its power.
 
 what happens there?
 
@@ -78,11 +78,11 @@ its nothing new , its like currently we were writing JS within script tag of htm
 
 but entire code is not injected in DOM, react has a virtual DOM which is a copy of real DOM and it monitors changes in real dom from virtual DOM and react updates the DOM accordingly. This is done via Diffing Algorithm.
 
-Like initally real dom is almost empty so entire virtual dom content is injected in it.Then if some changes are made then everytime new real dom is not created, diffing algorithm is finds changes and update the DOM accordingly with minimum changes needed
+Like initally real dom is almost empty so entire virtual dom content is injected in it.Then if some changes are made then everytime new real dom is not created, diffing algorithm finds changes and update the DOM accordingly with minimum changes needed
 
 
 thats why react applications are fast and efficient.
 
-// also note one thing related to  optimization: always prefer storing the element fetched from DOM in a variable.so that everytime we need to access any of its child then we dont need to tarverse entire tree from root.
+// also note one thing related to  optimization: always prefer storing the element fetched from DOM in a variable.so that everytime we need to access any of its child then we dont need to tarverse entire tree from very root.
 
 -->
